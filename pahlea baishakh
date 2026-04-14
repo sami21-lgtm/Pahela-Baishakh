@@ -1,0 +1,36 @@
+import time
+import os
+
+# কালার কোড
+class Rong:
+    LAL = '\033[91m'
+    SHOBUJ = '\033[92m'
+    HOLUD = '\033[93m'
+    NEEL = '\033[94m'
+    BOLD = '\033[1m'
+    END = '\033[0m'
+
+def banner_dekhau():
+    shimanah = f"{Rong.LAL}================================================={Rong.END}"
+    print(shimanah)
+    print(f"{Rong.HOLUD}{Rong.BOLD}           শুভ নববর্ষ ১৪৩৩          {Rong.END}")
+    print(shimanah)
+
+def shubhecha_janau():
+    bani = "পুরনো সব গ্লানি মুছে যাক নতুন বছরের শুরুতে... 🥁"
+    
+    # টাইপিং অ্যানিমেশন
+    for borno in bani:
+        print(f"{Rong.SHOBUJ}{borno}{Rong.END}", end='', flush=True)
+        time.sleep(0.08)
+    
+    print("\n\n" + Rong.NEEL + "আপনার নতুন বছর আনন্দময় ও সফল হোক!" + Rong.END)
+    print(Rong.HOLUD + "  🌾  ইলিশ-পান্তা  🎨  মেলা  🌞  হাসিখুশি  " + Rong.END)
+
+if __name__ == "__main__":
+    # স্ক্রিন পরিষ্কার করা
+    os.system('cls' if os.name == 'nt' else 'clear')
+    
+    banner_dekhau()
+    shubhecha_janau()
+    print(f"\n{Rong.BOLD}শুভ নববর্ষ!{Rong.END}\n")
