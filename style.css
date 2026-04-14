@@ -1,146 +1,76 @@
-/* ১. মূল বডি এবং ব্যাকগ্রাউন্ড (প্রথম ছবি) */
-body {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                url('download.jpg'); 
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: background 1s ease-in-out;
-    overflow: hidden;
+// ১. লিরিক আপডেট করা হয়েছে
+const message = "এসো, এসো, এসো হে বৈশাখ। তাপসনিশ্বাসবায়ে মুমূর্ষুরে দাও উড়ায়ে, বৎসরের আবর্জনা দূর হয়ে যাক॥ মুছে যাক গ্লানি, ঘুচে যাক জরা, অগ্নিস্নানে শুচি হোক ধরা। শুভ নববর্ষ ১৪৩৩!";
+let index = 0;
+
+function checkLogin() {
+    const user = document.getElementById("username").value; 
+    const pass = document.getElementById("password").value;
+
+    if (user.trim() !== "" && pass === "boishakh") { 
+        
+        // ব্যাকগ্রাউন্ড এবং কার্ড সুইচ
+        document.body.classList.add("logged-in-bg");
+        document.getElementById("login-card").style.display = "none";
+        const wishCard = document.getElementById("wish-card");
+        wishCard.style.display = "block";
+
+        // ২. কার্ডে নাচের ইফেক্ট (Dancing Effect) যোগ করা
+        wishCard.classList.add("dancing-card");
+
+        // ৩. গান প্লে করা
+        const song = document.getElementById("bg-music");
+        if (song) {
+            song.play().catch(error => {
+                console.log("অটো-প্লে ব্লক হয়েছে, ইউজার ইন্টারঅ্যাকশন প্রয়োজন।");
+            });
+        }
+        
+        const welcomeUser = document.getElementById("welcome-user");
+        welcomeUser.innerHTML = `সুস্বাগতম, <span id="styled-name">${user.toUpperCase()}</span>!`;
+        
+        applyStyles();
+        triggerConfetti();
+        typeEffect();
+    } else {
+        const errorElement = document.getElementById("error-msg");
+        errorElement.style.display = "block";
+        setTimeout(() => {
+            errorElement.style.display = "none";
+        }, 3000);
+    }
 }
 
-/* ২. লগইন সফল হওয়ার পর ব্যাকগ্রাউন্ড (দ্বিতীয় ছবি) */
-body.logged-in-bg {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                url('download (1).jpg') !important;
-    background-size: cover !important;
-    background-position: center !important;
+function applyStyles() {
+    const headline = document.getElementById("headline");
+    const styledName = document.getElementById("styled-name");
+
+    if (headline) {
+        headline.style.color = "#d32f2f"; 
+    }
+
+    if (styledName) {
+        styledName.style.background = "linear-gradient(45deg, #ff4e50, #f9d423, #fc913a)";
+        styledName.style.webkitBackgroundClip = "text";
+        styledName.style.webkitTextFillColor = "transparent";
+        styledName.style.fontWeight = "800";
+        styledName.style.display = "inline-block";
+    }
 }
 
-/* ৩. কার্ড ডিজাইন */
-.card {
-    position: relative;
-    background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), 
-                      url('download.jpg'); 
-    background-size: cover;
-    background-position: center;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-    text-align: center;
-    width: 90%; 
-    max-width: 380px; 
-    border: 4px solid #d32f2f;
-    box-sizing: border-box;
-    transition: transform 0.5s ease;
+function triggerConfetti() {
+    confetti({
+        particleCount: 150,
+        spread: 100,
+        origin: { y: 0.6 },
+        colors: ['#ff9933', '#ffffff', '#138808', '#d32f2f']
+    });
 }
 
-/* ৪. ড্যান্সিং এনিমেশন (গানের তালে কার্ড কাঁপবে) */
-.dancing-card {
-    animation: dance 2s infinite ease-in-out;
-}
-
-@keyframes dance {
-    0%, 100% { transform: rotate(0deg) scale(1); }
-    25% { transform: rotate(1deg) scale(1.02); }
-    50% { transform: rotate(-1deg) scale(1); }
-    75% { transform: rotate(1deg) scale(1.02); }
-}
-
-/* ৫. উইশ কার্ডের ব্যাকগ্রাউন্ড চেঞ্জ */
-#wish-card {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
-                      url('download (1).jpg');
-    background-size: cover;
-}
-
-/* ৬. ইনপুট ও বাটন স্টাইল */
-input {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    outline: none;
-    font-size: 1rem;
-    background: rgba(255, 255, 255, 0.9);
-    box-sizing: border-box;
-}
-
-button {
-    background: #d32f2f;
-    color: white;
-    border: none;
-    padding: 14px;
-    border-radius: 8px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 1.1rem;
-    font-weight: bold;
-    margin-top: 15px;
-    transition: 0.3s;
-}
-
-button:hover {
-    background: #b71c1c;
-    transform: translateY(-2px);
-}
-
-/* ৭. টেক্সট ও হেডলাইন ডিজাইন */
-#headline {
-    color: #d32f2f;
-    font-size: 2.2rem;
-    font-weight: 800;
-    margin-bottom: 10px;
-}
-
-#welcome-user {
-    font-size: 1.4rem;
-    margin: 15px 0;
-    color: #333;
-}
-
-#styled-name {
-    background: linear-gradient(45deg, #ff4e50, #f9d423, #fc913a);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: bold;
-    font-size: 1.7rem;
-    display: inline-block;
-}
-
-/* টাইপিং টেক্সট বা লিরিক স্টাইল */
-#typing-text {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: #b71c1c; /* লিরিক লালচে হলে সুন্দর লাগে */
-    font-weight: 600;
-    text-align: center;
-    font-style: italic; /* গানের মতো লুক দিতে */
-}
-
-/* ৮. এনিমেশন */
-.decorations span {
-    display: inline-block;
-    font-size: 2rem;
-    margin: 0 8px;
-    animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-#error-msg {
-    color: #d32f2f;
-    font-weight: bold;
-    display: none;
-    margin-top: 10px; 
+function typeEffect() {
+    const typingContainer = document.getElementById("typing-text");
+    if (index < message.length) {
+        typingContainer.innerHTML += message.charAt(index);
+        index++;
+        setTimeout(typeEffect, 50); // গানের সাথে সামঞ্জস্য রাখতে স্পিড একটু বাড়ানো হয়েছে
+    }
 }
