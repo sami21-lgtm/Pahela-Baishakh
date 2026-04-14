@@ -1,7 +1,6 @@
-/* ১. মূল বডি এবং ব্যাকগ্রাউন্ড সেটআপ */
 body {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                url('download.jpg'); 
+                url('image_446c6b.png'); 
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -12,55 +11,64 @@ body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     transition: background 1s ease-in-out;
-    overflow: hidden; /* মোবাইল স্ক্রিনে অযথা স্ক্রল ঠেকানোর জন্য */
 }
 
-/* ২. লগইন সফল হওয়ার পর ব্যাকগ্রাউন্ড */
 body.logged-in-bg {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                url('download (1).jpg') !important;
+                url('image_4474ac.png') !important;
     background-size: cover !important;
     background-position: center !important;
 }
 
-/* ৩. কার্ড ডিজাইন (পিসি ও মোবাইলের জন্য রেসপন্সিভ) */
 .card {
-    background: rgba(255, 255, 255, 0.94);
-    padding: 30px;
+    /* ছবিগুলি লগইন কার্ডের ভেতরে সেট করার জন্য নিচের অংশটুকু */
+    position: relative;
+    overflow: hidden;
+    background-image: url('image_446c6b.png');
+    background-size: contain; /* ছবি পুরো লগইন কার্ডের ভেতরে সুন্দরভাবে থাকবে */
+    background-position: center;
+    background-repeat: no-repeat;
+    /* কার্ডের অন্য স্টাইলগুলি */
+    padding: 40px;
     border-radius: 20px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
     text-align: center;
-    width: 90%; /* মোবাইলে ৯০% জায়গা নিবে */
-    max-width: 400px; /* পিসিতে ৪০০ পিক্সেলের বেশি বড় হবে না */
-    border: 5px solid #d32f2f;
-    backdrop-filter: blur(10px);
-    box-sizing: border-box; /* উইডথ ক্যালকুলেশন ঠিক রাখার জন্য */
+    width: 350px;
+    border: 4px solid #d32f2f;
+    z-index: 1; /* অন্যান্য উপাদানের উপরে রাখার জন্য */
 }
 
-/* ৪. ইনপুট ও বাটন স্টাইল */
+/* উইশ কার্ডের জন্য একটু আলাদা স্টাইল */
+#wish-card {
+    background-image: url('image_4474ac.png');
+    background-size: contain; 
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 input {
-    width: 100%;
-    padding: 14px;
+    width: 90%;
+    padding: 12px;
     margin: 10px 0;
     border: 2px solid #ddd;
-    border-radius: 10px;
+    border-radius: 8px;
     outline: none;
     font-size: 1rem;
-    box-sizing: border-box;
     transition: 0.3s;
+    background: rgba(255, 255, 255, 0.8); /* ইনপুট ফিল্ডগুলিকে দৃশ্যমান করার জন্য */
 }
 
 input:focus {
     border-color: #d32f2f;
-    box-shadow: 0 0 10px rgba(211, 47, 47, 0.2);
+    box-shadow: 0 0 8px rgba(211, 47, 47, 0.2);
 }
 
 button {
     background: #d32f2f;
     color: white;
     border: none;
-    padding: 15px;
-    border-radius: 10px;
+    padding: 14px;
+    border-radius: 8px;
     cursor: pointer;
     width: 100%;
     font-size: 1.1rem;
@@ -71,10 +79,10 @@ button {
 
 button:hover {
     background: #b71c1c;
-    transform: scale(1.02);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(211, 47, 47, 0.4);
 }
 
-/* ৫. টেক্সট ও অ্যানিমেশন */
 #typing-text {
     font-size: 1.15rem;
     line-height: 1.6;
@@ -85,19 +93,11 @@ button:hover {
 
 .decorations span {
     font-size: 2rem;
-    margin: 10px;
-    display: inline-block;
+    margin: 0 10px;
 }
 
-/* ৬. রেসপন্সিভ ব্রেকপয়েন্ট (মোবাইলের জন্য) */
-@media (max-width: 480px) {
-    .card {
-        padding: 25px 20px;
-    }
-    h1 {
-        font-size: 1.8rem;
-    }
-    #typing-text {
-        font-size: 1rem;
-    }
+#error-msg {
+    color: #d32f2f;
+    font-weight: bold;
+    margin-top: 10px;
 }
