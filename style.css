@@ -1,4 +1,4 @@
-/* ১. মূল বডি এবং ব্যাকগ্রাউন্ড (প্রথম ছবি) */
+/* ১. মূল বডি এবং ডিফল্ট ব্যাকগ্রাউন্ড (প্রথম ছবি) */
 body {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
                 url('download.jpg'); 
@@ -12,10 +12,10 @@ body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     transition: background 1s ease-in-out;
-    overflow: hidden;
+    overflow: hidden; /* মোবাইলে স্ক্রলবার বন্ধ রাখার জন্য */
 }
 
-/* ২. লগইন সফল হওয়ার পর ব্যাকগ্রাউন্ড (দ্বিতীয় ছবি) */
+/* ২. লগইন সফল হওয়ার পর ব্যাকগ্রাউন্ড (দ্বিতীয় ছবি) */
 body.logged-in-bg {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
                 url('download (1).jpg') !important;
@@ -23,7 +23,7 @@ body.logged-in-bg {
     background-position: center !important;
 }
 
-/* ৩. কার্ড ডিজাইন */
+/* ৩. কার্ড ডিজাইন (পিসি ও মোবাইল রেসপন্সিভ) */
 .card {
     position: relative;
     background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), 
@@ -41,44 +41,50 @@ body.logged-in-bg {
     transition: transform 0.5s ease;
 }
 
-/* ৪. ড্যান্সিং এনিমেশন (গানের তালে কার্ড কাঁপবে) */
+/* ৪. ড্যান্সিং এনিমেশন (লগইন হলে এই ক্লাসটি JS দিয়ে কার্ডে যোগ হবে) */
 .dancing-card {
-    animation: dance 2s infinite ease-in-out;
+    animation: dance 2.5s infinite ease-in-out;
 }
 
 @keyframes dance {
     0%, 100% { transform: rotate(0deg) scale(1); }
-    25% { transform: rotate(1deg) scale(1.02); }
-    50% { transform: rotate(-1deg) scale(1); }
-    75% { transform: rotate(1deg) scale(1.02); }
+    25% { transform: rotate(1.5deg) scale(1.02); }
+    50% { transform: rotate(-1.5deg) scale(1.01); }
+    75% { transform: rotate(1.5deg) scale(1.02); }
 }
 
-/* ৫. উইশ কার্ডের ব্যাকগ্রাউন্ড চেঞ্জ */
+/* ৫. উইশ কার্ডের জন্য ব্যাকগ্রাউন্ড ইফেক্ট */
 #wish-card {
     background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
                       url('download (1).jpg');
     background-size: cover;
 }
 
-/* ৬. ইনপুট ও বাটন স্টাইল */
+/* ৬. ইনপুট ও বাটন স্টাইল (মোবাইল ফ্রেন্ডলি) */
 input {
     width: 100%;
     padding: 12px;
     margin: 10px 0;
     border: 2px solid #ddd;
-    border-radius: 8px;
+    border-radius: 10px;
     outline: none;
     font-size: 1rem;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     box-sizing: border-box;
+    transition: 0.3s;
+}
+
+input:focus {
+    border-color: #d32f2f;
+    box-shadow: 0 0 8px rgba(211, 47, 47, 0.2);
 }
 
 button {
     background: #d32f2f;
     color: white;
     border: none;
-    padding: 14px;
-    border-radius: 8px;
+    padding: 15px;
+    border-radius: 10px;
     cursor: pointer;
     width: 100%;
     font-size: 1.1rem;
@@ -90,6 +96,7 @@ button {
 button:hover {
     background: #b71c1c;
     transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(211, 47, 47, 0.3);
 }
 
 /* ৭. টেক্সট ও হেডলাইন ডিজাইন */
@@ -98,10 +105,11 @@ button:hover {
     font-size: 2.2rem;
     font-weight: 800;
     margin-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
 #welcome-user {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     margin: 15px 0;
     color: #333;
 }
@@ -111,36 +119,55 @@ button:hover {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: bold;
-    font-size: 1.7rem;
+    font-size: 1.8rem;
     display: inline-block;
 }
 
-/* টাইপিং টেক্সট বা লিরিক স্টাইল */
+/* গানের লিরিক স্টাইল */
 #typing-text {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     line-height: 1.7;
-    color: #b71c1c; /* লিরিক লালচে হলে সুন্দর লাগে */
+    color: #b71c1c; 
     font-weight: 600;
     text-align: center;
-    font-style: italic; /* গানের মতো লুক দিতে */
+    font-style: italic;
+    padding: 0 5px;
 }
 
-/* ৮. এনিমেশন */
+/* ৮. ইমোজি বা ডেকোরেশন এনিমেশন */
 .decorations span {
     display: inline-block;
-    font-size: 2rem;
-    margin: 0 8px;
-    animation: bounce 2s infinite;
+    font-size: 2.2rem;
+    margin: 10px 8px;
+    animation: bounce 2s infinite ease-in-out;
 }
 
 @keyframes bounce {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    50% { transform: translateY(-12px); }
 }
 
+/* ৯. এরর মেসেজ স্টাইল */
 #error-msg {
     color: #d32f2f;
     font-weight: bold;
     display: none;
-    margin-top: 10px; 
+    margin-top: 12px;
+    font-size: 0.9rem;
+}
+
+/* ১০. ছোট মোবাইলের জন্য মিডিয়া কোয়েরি */
+@media (max-width: 480px) {
+    #headline {
+        font-size: 1.8rem;
+    }
+    #welcome-user {
+        font-size: 1.3rem;
+    }
+    #styled-name {
+        font-size: 1.5rem;
+    }
+    .card {
+        padding: 20px;
+    }
 }
