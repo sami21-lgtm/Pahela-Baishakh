@@ -3,23 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>শুভ নববর্ষ ১৪৩৩</title>
+    <title>নববর্ষ লগইন - ১৪৩৩</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <div class="card">
+        <div id="login-card" class="card">
+            <h2 style="color: #d32f2f;">শুভ নববর্ষে স্বাগত</h2>
+            <div class="input-group">
+                <input type="text" id="username" placeholder="ইউজারনেম">
+                <input type="password" id="password" placeholder="পাসওয়ার্ড">
+            </div>
+            <button onclick="checkLogin()">লগইন করুন</button>
+            <p id="error-msg" style="color: red; font-size: 0.9rem; margin-top: 10px; display: none;">ভুল ইউজারনেম বা পাসওয়ার্ড!</p>
+        </div>
+
+        <div id="wish-card" class="card" style="display: none;">
             <h1 id="headline">শুভ নববর্ষ ১৪৩৩</h1>
+            <h3 id="welcome-user" style="color: #138808;"></h3>
             <p id="typing-text"></p>
             <div class="decorations">
                 <span>🌾</span><span>🎨</span><span>🌞</span><span>🥁</span>
             </div>
-            <button onclick="wishMe()">শুভেচ্ছা দেখুন</button>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-    
     <script src="script.js"></script>
 </body>
 </html>
