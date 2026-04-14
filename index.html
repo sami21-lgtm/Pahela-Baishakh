@@ -8,27 +8,31 @@
 </head>
 <body>
     <div class="container">
+        
         <div id="login-card" class="card">
-            <h2 style="color: #d32f2f; margin-bottom: 20px;">স্বাগতম</h2>
+            <h2 id="login-title">স্বাগতম</h2>
             <div class="input-group">
                 <input type="text" id="username" placeholder="ইউজারনেম (sami)">
+                
                 <input type="password" id="password" placeholder="পাসওয়ার্ড (boishakh)">
             </div>
             <button onclick="checkLogin()">প্রবেশ করুন</button>
-            <p id="error-msg" style="color: red; display: none; margin-top: 15px; font-weight: bold;">তথ্য ভুল হয়েছে!</p>
+            <p id="error-msg">তথ্য ভুল হয়েছে! আবার চেষ্টা করুন।</p>
         </div>
 
         <div id="wish-card" class="card" style="display: none;">
             <h1 id="headline">শুভ নববর্ষ ১৪৩৩</h1>
-            <h3 id="welcome-user" style="color: #138808; margin-top: 10px;"></h3>
+            <h3 id="welcome-user"></h3>
             <p id="typing-text"></p>
             <div class="decorations">
                 <span>🌾</span><span>🎨</span><span>🌞</span><span>🥁</span>
             </div>
         </div>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
     <script src="script.js"></script>
 </body>
 </html>
