@@ -2,24 +2,27 @@ const message = "পুরনো সব গ্লানি মুছে যা�
 let index = 0;
 
 function checkLogin() {
-    const user = document.getElementById("username").value;
+    const user = document.getElementById("username").value.toLowerCase();
     const pass = document.getElementById("password").value;
 
     if (user === "sami" && pass === "boishakh") {
-        // ১. ব্যাকগ্রাউন্ড বদলানো
+        // ব্যাকগ্রাউন্ড চেঞ্জ
         document.body.classList.add("logged-in-bg");
 
-        // ২. কার্ড সুইচ করা
+        // কার্ড সুইচ
         document.getElementById("login-card").style.display = "none";
         document.getElementById("wish-card").style.display = "block";
         
-        document.getElementById("welcome-user").innerText = `সুস্বাগতম, ${user}!`;
+        document.getElementById("welcome-user").innerText = `সুস্বাগতম, ${user.toUpperCase()}!`;
         
-        // ৩. অ্যানিমেশন শুরু
+        // সেলিব্রেশন শুরু
         triggerConfetti();
         typeEffect();
     } else {
         document.getElementById("error-msg").style.display = "block";
+        setTimeout(() => {
+            document.getElementById("error-msg").style.display = "none";
+        }, 3000);
     }
 }
 
@@ -36,6 +39,6 @@ function typeEffect() {
     if (index < message.length) {
         document.getElementById("typing-text").innerHTML += message.charAt(index);
         index++;
-        setTimeout(typeEffect, 50);
+        setTimeout(typeEffect, 60);
     }
 }
