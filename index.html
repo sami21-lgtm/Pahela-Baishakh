@@ -13,16 +13,22 @@
             <h2 id="login-title">স্বাগতম</h2>
             <div class="input-group">
                 <input type="text" id="username" placeholder="আপনার নাম লিখুন">
-                <input type="password" id="password" placeholder="পাসওয়ার্ড">
+                <input type="password" id="password" placeholder="পাসওয়ার্ড (boishakh)">
             </div>
             <button onclick="checkLogin()">প্রবেশ করুন</button>
-            <p id="error-msg" style="display: none; color: red;">তথ্য ভুল হয়েছে! আবার চেষ্টা করুন।</p>
+            <p id="error-msg" style="display: none; color: red; font-weight: bold; margin-top: 10px;">তথ্য ভুল হয়েছে! আবার চেষ্টা করুন।</p>
         </div>
 
         <div id="wish-card" class="card" style="display: none;">
             <h1 id="headline">শুভ নববর্ষ ১৪৩৩</h1>
-            <h3 id="welcome-user">সুস্বাগতম, <span id="display-name"></span>!</h3>
+            
+            <audio id="bg-music" loop>
+                <source src="shoho-boishakh.mp3" type="audio/mpeg">
+                </audio>
+
+            <h3 id="welcome-user"></h3>
             <p id="typing-text"></p>
+            
             <div class="decorations">
                 <span>🌾</span><span>🎨</span><span>🌞</span><span>🥁</span>
             </div>
